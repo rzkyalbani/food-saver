@@ -45,4 +45,9 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function partner()
+    {
+        return $this->hasOne(Partner::class);
+    }
 }
