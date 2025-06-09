@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\Partner\OfferController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -22,7 +23,16 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    // Rute untuk halaman pembayaran (simulasi)
+    Route::get('/orders/{order}/payment', [OrderController::class, 'payment'])->name('orders.payment');
+    // Rute untuk mengkonfirmasi pembayaran (simulasi)
+    Route::post('/orders/{order}/pay', [OrderController::class, 'pay'])->name('orders.pay');
+    // Rute untuk melihat semua pesanan milik pengguna
+    Route::get('/my-orders', [OrderController::class, 'index'])->name('orders.index');
 });
+
+Route::post('/orders', [OrderController::class, 'store'])->name('orders.store')->middleware('auth');
 
 Route::middleware(['auth', 'role:partner'])->prefix('partner')->name('partner.')->group(function () {
     // Rute untuk dashboard
