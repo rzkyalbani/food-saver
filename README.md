@@ -1,66 +1,60 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+Tutorial Instalasi Food Saver App (Development Mode)
+Food Saver App adalah aplikasi yang menghubungkan pengguna dengan toko-toko lokal untuk membeli makanan berlebih dengan harga diskon, membantu mengurangi limbah makanan sekaligus menghemat pengeluaran.
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Persyaratan Sistem
+PHP 8.2 atau lebih tinggi
+Composer
+Node.js dan NPM
+MySQL atau database yang didukung Laravel
+Git
+Langkah-langkah Instalasi untuk Pengembangan
+1. Klon Repositori
+2. Instal Dependensi PHP
+3. Instal Dependensi JavaScript
+4. Konfigurasi Environment
+Edit file .env dan sesuaikan konfigurasi database:
 
-## About Laravel
+Tambahkan konfigurasi Xendit untuk pembayaran:
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Juga atur timezone untuk Indonesia:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+5. Migrasi dan Seed Database
+6. Buat Symlink Storage
+7. Menjalankan Aplikasi untuk Development
+Untuk development, gunakan perintah berikut dalam terminal terpisah:
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Dengan schedule:work, Anda tidak perlu mengatur cron job karena perintah ini akan menjalankan scheduler Laravel secara real-time dalam foreground.
 
-## Learning Laravel
+Fitur Utama
+Autentikasi Pengguna: Registrasi, login, dan manajemen profil
+Sistem Multi-Role: Pengguna biasa dan mitra toko
+Geolokasi: Temukan penawaran terdekat dengan lokasi Anda
+Katalog Penawaran: Jelajahi penawaran makanan dari berbagai toko
+Sistem Pemesanan: Buat pesanan dan lakukan pembayaran melalui Xendit
+Konfirmasi Pengambilan: Sistem validasi kode pesanan saat pengambilan
+Dashboard Pengguna: Lacak pesanan dan riwayat transaksi
+Dashboard Mitra: Kelola toko dan buat penawaran baru
+Pengembangan Full Stack
+Untuk menggunakan perintah development terintegrasi yang telah diatur dalam composer.json:
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+Perintah ini akan menjalankan server Laravel, queue listener, logs, dan Vite secara bersamaan dengan concurrently.
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+Akun Test
+Aplikasi menyediakan beberapa akun untuk testing:
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Admin: admin@example.com / password
+Mitra: partner@example.com / password
+Pengguna: user@example.com / password
+Integrasi Pembayaran
+Untuk development, Anda dapat menggunakan akun test Xendit. Daftar di Xendit untuk mendapatkan API key test.
 
-## Laravel Sponsors
+Troubleshooting
+Jika mengalami masalah, coba perintah berikut:
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Catatan Penting
+Pastikan ekstensi PHP yang diperlukan sudah terinstal (fileinfo, gd, pdo_mysql, dll)
+Folder storage dan cache harus memiliki permission yang benar (writable)
+Scheduler pada mode development akan tetap berjalan selama php artisan schedule:work aktif
+Hapus .env.example dari repo Git Anda jika ingin membagikan kode tanpa kredensial default
+Mengakses Aplikasi
+Setelah menjalankan server, akses aplikasi di http://localhost:8000
